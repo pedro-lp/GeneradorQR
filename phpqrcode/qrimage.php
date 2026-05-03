@@ -44,22 +44,19 @@
                 }
             }
             
-            ImageDestroy($image);
         }
-    
+
         //----------------------------------------------------------------------
-        public static function jpg($frame, $filename = false, $pixelPerPoint = 8, $outerFrame = 4, $q = 85) 
+        public static function jpg($frame, $filename = false, $pixelPerPoint = 8, $outerFrame = 4, $q = 85)
         {
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
-            
+
             if ($filename === false) {
                 Header("Content-type: image/jpeg");
                 ImageJpeg($image, null, $q);
             } else {
-                ImageJpeg($image, $filename, $q);            
+                ImageJpeg($image, $filename, $q);
             }
-            
-            ImageDestroy($image);
         }
     
         //----------------------------------------------------------------------
@@ -88,8 +85,6 @@
             
             $target_image =ImageCreate($imgW * $pixelPerPoint, $imgH * $pixelPerPoint);
             ImageCopyResized($target_image, $base_image, 0, 0, 0, 0, $imgW * $pixelPerPoint, $imgH * $pixelPerPoint, $imgW, $imgH);
-            ImageDestroy($base_image);
-            
             return $target_image;
         }
     }
